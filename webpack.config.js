@@ -1,5 +1,4 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
@@ -7,11 +6,11 @@ module.exports = {
     loaders: [{
       exclude: /node_modules/,
       loader: 'babel',
-      test: /\.jsx?$/
-    }]
+      test: /\.jsx?$/,
+    }],
   },
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'public/js/')
-  }
+    path: path.join(__dirname, 'public/js/'),
+  },
 };
