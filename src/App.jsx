@@ -13,12 +13,15 @@ export default class App extends React.Component {
       postDescription: '',
       users: null,
       userEmail: '',
+      search: null,
+      searchTitle: '',
     };
   }
 
   componentDidMount() {
     this.getPosts();
     this.getUsers();
+    this.getSearch();
   }
 
   getPosts = () => {
@@ -47,6 +50,39 @@ export default class App extends React.Component {
     .then((json) => {
       this.setState({users: json.users});
     });
+  };
+
+  getSearch = () => {
+    var title = this.state.searchTitle.trim().replace(/\s+/g, " ").replace(/\s/g, "-")
+
+    if(title){
+      fetch('http://localhost:8000/search/' + title, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({search: json.result});
+      });
+  }
+
+  else{
+      fetch('http://localhost:8000/search/', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({search: json.result});
+      });
+  }
+
   };
 
   createPost = () => {
@@ -101,6 +137,18 @@ export default class App extends React.Component {
     ));
   }
 
+  renderSearch() {
+  if (!this.state.search) {
+      return <div>Loading...</div>;
+    } else if (this.state.search.length === 0) {
+      return <div>No Results.</div>;
+    }
+
+    return this.state.search.map((result) => (
+      <li key={result.id}>{result.id} - {result.userId} - {result.title} - {result.description}</li>
+    ));
+  }
+
   render() {
     return (
       <div>
@@ -133,6 +181,17 @@ export default class App extends React.Component {
             value={this.state.postDescription}
           />
           <button onClick={this.createPost}>Create</button>
+        </div>
+
+        <div>Search Result</div>
+        <ul>{this.renderSearch()}</ul>
+        <div>
+          <input
+            onChange={(e) => this.setState({searchTitle: e.target.value})}
+            placeholder="search title"
+            value={this.state.searchTitle}
+          />
+          <button onClick={this.getSearch}>Search</button>
         </div>
       </div>
     );
