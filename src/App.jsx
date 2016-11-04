@@ -7,6 +7,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
+      city: null,
       posts: null,
       postUserId: '',
       postTitle: '',
@@ -19,10 +20,24 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getCity();
     this.getPosts();
     this.getUsers();
     this.getSearch();
   }
+
+  getCity = () => { 
+    fetch('http://freegeoip.net/json/', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      this.setState({city: json.city});
+    });
+  };
 
   getPosts = () => {
     fetch('http://localhost:8000/posts', {
@@ -113,6 +128,17 @@ export default class App extends React.Component {
     });
   };
 
+
+  renderCity() {
+    if (!this.state.city) {
+      return <div>Loading...</div>;
+    } else if (this.state.city.length === 0) {
+      return <div>Can't find city.</div>;
+    }
+
+    return this.state.city;
+  }
+
   renderPosts() {
     if (!this.state.posts) {
       return <div>Loading...</div>;
@@ -152,6 +178,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        <div>City</div>        
+        <ul>{this.renderCity()}</ul>
+
         <div>Users</div>
         <ul>{this.renderUsers()}</ul>
         <div>
@@ -162,6 +191,7 @@ export default class App extends React.Component {
           />
           <button onClick={this.createUser}>Create</button>
         </div>
+
         <div>Posts</div>
         <ul>{this.renderPosts()}</ul>
         <div>
