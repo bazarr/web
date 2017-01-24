@@ -1,4 +1,4 @@
-import App from './App.jsx';
+import App from './front_page/jsx/main.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -7,6 +7,10 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       test: /\.jsx?$/,
+    },{
+      test: /\.css/,
+      loaders: ['style', 'css'],
+      include: __dirname + '/src'
     }],
   },
   output: {

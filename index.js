@@ -5,9 +5,9 @@ const PORT = process.env.PORT || 9000;
 
 app.use('/public', express.static(`${__dirname}/public`));
 app.set('views', `${__dirname}/views`);
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); 
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.render('pages/index');
 });
 
