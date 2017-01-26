@@ -15,8 +15,8 @@ export default class PostForm extends React.Component {
                 <div className="thumbnail">
                     <div className="caption">
                         <div className="btn-group text-center" style={{margin: '10px 0 10px 0'}} role="group">
-                            <button onClick={}type="button" className="btn btn-default">Selling</button>
-                            <button onClick={}type="button" className="btn btn-default">Buying</button>
+                            <button type="button" className="btn btn-default">Selling</button>
+                            <button type="button" className="btn btn-default">Buying</button>
                         </div>
                         <form>
                             <div className="form-group">
