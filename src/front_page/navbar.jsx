@@ -5,11 +5,13 @@ export default class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.getCity = this.getCity.bind(this);
+        this.getCategory = this.getCategory.bind(this);
         this.state = {};
     }
     
     componentDidMount() {
         this.getCity();
+        this.getCategory();
     }
 
     getCity = () => {
@@ -23,6 +25,21 @@ export default class NavBar extends React.Component {
         .then((json) => {
             this.setState({
                 city: json.city
+            });
+        });
+    };
+
+    getCategory = () => {
+        fetch('https://bazarr-python.herokuapp.com/predict?text=music', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            this.setState({
+                categories: json.Books
             });
         });
     };
@@ -47,6 +64,7 @@ export default class NavBar extends React.Component {
                     <div className="container">
                         <div className="text-center">
                             <h1>Welcome to Bazarr!</h1>
+                            <h1>{this.state.categories}</h1>
                             <p>Join the growing community</p>
                         </div>
                         <div className="row" style={{margin: 'auto', padding: '25px 0 0 0', maxWidth:'600px'}}>
