@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './navbar.jsx';
-import PostList from './postlist.jsx';
-import PostForm from './postform.jsx';
+import Content from './content.jsx';
+import 'whatwg-fetch';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,12 +16,7 @@ export default class App extends React.Component {
     return (
       <div>
         <NavBar/>
-        <div className="row"  style={{margin: "50px 0 0 0"}}>
-          <div className="container-fluid">
-            <PostForm/>
-            <PostList/>
-          </div>
-        </div>
+        <Content/>
       </div>
     );
   }

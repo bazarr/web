@@ -8,7 +8,11 @@ app.set('views', `${__dirname}/views`);
 app.set('view engine', 'ejs'); 
 
 app.get('/', (req, res) => {
-  res.render('pages/index');
+  res.render('pages/front_page');
+});
+
+app.get('/search', (req,res) => {
+  res.render('pages/search_results');
 });
 
 app.listen(PORT, () => {

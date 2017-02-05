@@ -1,7 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: ['whatwg-fetch', './src/index.js'],
+  entry: {
+        frontPage: "./src/front_page",
+        searchResults: "./src/search_results"
+  },
   module: {
     loaders: [{
       exclude: /node_modules/,
@@ -14,7 +17,7 @@ module.exports = {
     }],
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name]-bundle.js',
     path: path.join(__dirname, 'public/js/'),
   },
 };
