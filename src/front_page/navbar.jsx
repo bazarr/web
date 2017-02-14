@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
     }
 
     getCity = () => {
-        fetch('http://freegeoip.net/json/', {
+        fetch('https://freegeoip.net/json/', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
