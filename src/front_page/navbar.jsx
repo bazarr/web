@@ -46,25 +46,18 @@ export default class NavBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-default navbar-fixed-top" style={{background: 'purple'}}>
+            <div className="navbar-box">
+                <nav className="navbar navbar-default navbar-fixed-top navbar-content" >
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <a className="navbar-brand" style={{color: 'white'}} href="#">Bazarr {this.state.city}</a>
-                        </div>
-                        <div className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav">
-                                <li><a href="#" style={{color: 'white'}}>Posts</a></li>
-                                <li><a href="#" style={{color: 'white'}}>Search</a></li>
-                            </ul>
+                            <a className="navbar-brand" style={{color: 'white'}} href="#">Bazarr | {this.state.city}</a>
                         </div>
                     </div>
                 </nav>
-                <div className="jumbotron" style={{margin: '50px 0 0 0'}}>
+                <div className="jumbotron bazarr-background-image">
                     <div className="container">
                         <div className="text-center">
                             <h1>Welcome to Bazarr!</h1>
-                            <h1>{this.state.categories}</h1>
                             <p>Join the growing community</p>
                         </div>
                         <div className="row" style={{margin: 'auto', padding: '25px 0 0 0', maxWidth:'600px'}}>

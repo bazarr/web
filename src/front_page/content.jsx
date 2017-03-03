@@ -11,7 +11,6 @@ export default class Content extends React.Component {
         return (
             <div className="row"  style={{margin: "50px 0 0 0"}}>
                <div className="container-fluid">
-                    <PostForm/>
                     <PostList/>
                 </div>
             </div>
