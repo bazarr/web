@@ -4231,7 +4231,7 @@
 	                return response.json();
 	            }).then(function (json) {
 	                _this.setState({
-	                    city: json.city
+	                    location: json.city + ', ' + json.region_name
 	                });
 	            });
 	        };
@@ -4253,7 +4253,7 @@
 
 	        _this.getCity = _this.getCity.bind(_this);
 	        _this.getCategory = _this.getCategory.bind(_this);
-	        _this.state = {};
+	        _this.state = { location: 'Fetching Location...' };
 	        return _this;
 	    }
 
@@ -4281,8 +4281,16 @@
 	                            _react2.default.createElement(
 	                                'a',
 	                                { className: 'navbar-brand', style: { color: 'white' }, href: '#' },
-	                                'Bazarr | ',
-	                                this.state.city
+	                                'Bazarr'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'form',
+	                            { className: 'navbar-form navbar-left', role: 'search' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'form-group' },
+	                                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: this.state.location })
 	                            )
 	                        )
 	                    )
@@ -4466,32 +4474,22 @@
 	                    i++;
 	                    return _react2.default.createElement(
 	                        'div',
-	                        { key: i, className: 'col-md-6 col-sm-6 col-lg-6' },
+	                        { key: i, className: 'col-sm-4 col-md-4 col-lg-3' },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'thumbnail' },
+	                            { className: 'post-card' },
 	                            _react2.default.createElement(
 	                                'div',
-	                                { className: 'caption' },
-	                                _react2.default.createElement(
-	                                    'h3',
-	                                    null,
-	                                    post.label
-	                                ),
-	                                _react2.default.createElement('img', { src: post.img, className: 'img-thumbnail' }),
+	                                { className: 'default-post-image-box' },
+	                                _react2.default.createElement('div', { className: 'default-post-image' })
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'text-center post-card-info' },
 	                                _react2.default.createElement(
 	                                    'p',
 	                                    null,
 	                                    post.description
-	                                ),
-	                                _react2.default.createElement(
-	                                    'p',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#', className: 'btn btn-primary', role: 'button' },
-	                                        'Buy'
-	                                    )
 	                                )
 	                            )
 	                        )
@@ -4504,9 +4502,10 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
+
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'col-md-8 col-sm-12 col-lg-8' },
+	                { className: 'col-md-12 col-sm-12 col-lg-12' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'row' },
@@ -6554,7 +6553,7 @@
 
 
 	// module
-	exports.push([module.id, "div.footer {\n    height: 100px;\n    width: 100%;\n    background-color: purple;\n}\n\ndiv.nav-bar {\n    position: fixed;\n    top: 0;\n    width: 100%;\n}\n\ndiv.search-box {\n    max-width: 650px;\n    margin-left: 10%;\n    margin-right: 10%;\n    margin-top: 10px;\n}\n\ndiv.feedback-box {\n    height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    max-width: 450px;\n}\n\ndiv.bazarr-background-image {\n    background-image: url(\"https://images5.alphacoders.com/573/thumb-1920-573228.jpg\");\n    background-size: cover;\n    background-position: center 20%;\n    background-repeat: no-repeat;\n    opacity: 0.84;\n    width: 100%;    \n    height: auto;\n    color: white;\n}\n\nnav.navbar-default {\n    border: transparent !important;\n    background-color: transparent !important;\n    position: absolute;\n    z-index: 1;\n    font-size: 20px;\n    padding: 0px 0px 0px 10px;\n}\n\na.home-link {\n    color: white;\n}\n\ndiv.search-navbar {\n    margin: 'auto';\n    padding: '25px 0 0 0';\n    max-width:'600px';\n}\n\nbody {\n    font-family: 'Roboto', sans-serif;\n}", ""]);
+	exports.push([module.id, "@-webkit-keyframes hover-shadow-effect {\n  0%   {}\n  100% { box-shadow: 1px 2px 4px 5px #969192; }\n}\n\ndiv.footer {\n    height: 100px;\n    width: 100%;\n    background-color: purple;\n}\n\ndiv.nav-bar {\n    position: fixed;\n    top: 0;\n    width: 100%;\n}\n\ndiv.search-box {\n    max-width: 650px;\n    margin-left: 10%;\n    margin-right: 10%;\n    margin-top: 10px;\n}\n\ndiv.feedback-box {\n    height: 100%;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    max-width: 450px;\n}\n\ndiv.bazarr-background-image {\n    background-image: url(\"https://images5.alphacoders.com/573/thumb-1920-573228.jpg\");\n    background-size: cover;\n    background-position: center 20%;\n    background-repeat: no-repeat;\n    opacity: 0.84;\n    width: 100%;    \n    height: auto;\n    color: white;\n}\n\ndiv.default-post-image-box {\n    width: 100%;\n    height: 150px;\n}\n\ndiv.post-card:hover {\n    -webkit-animation: hover-shadow-effect 0.15s linear forwards;\n}\n\ndiv.post-card:hover, div.post-card {\n    border-radius: 5px;\n    height: 250px;\n}\n\ndiv.post-card {\n    box-shadow: 1px 1px 1px 1px #969192;\n    margin-bottom: 20px;\n}\n\ndiv.default-post-image {\n    background-image: url(\"http://cars.mclaren.com/files/live/sites/mclaren/files/cars-mclaren-com-Main/McLaren%20Model%20Section/P1%20New%20Images/Development%20%20or%20performance%20-%20P1%20at%20the%20ring/P1%20Bahrain%20shoot/McLaren%20P1%20Bahrain-773-crop5184x2670.jpg?t=w1440\");\n    background-size: cover;\n    background-position: center center;\n    background-repeat: no-repeat;\n    opacity: 0.84;\n    width: 100%;    \n    height: 100%;\n}\n\nnav.navbar-default {\n    border: transparent !important;\n    background-color: transparent !important;\n    position: absolute;\n    z-index: 1;\n    font-size: 20px;\n    padding: 0px 0px 0px 10px;\n}\n\na.home-link {\n    color: white;\n}\n\ndiv.post-card-info {\n    margin: 20px 0px 20px 0px;\n}\n\ndiv.search-navbar {\n    margin: 'auto';\n    padding: '25px 0 0 0';\n    max-width:'600px';\n}\n\nbody {\n    font-family: 'Roboto', sans-serif;\n}", ""]);
 
 	// exports
 

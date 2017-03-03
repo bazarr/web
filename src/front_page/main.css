@@ -1,3 +1,8 @@
+@-webkit-keyframes hover-shadow-effect {
+  0%   {}
+  100% { box-shadow: 1px 2px 4px 5px #969192; }
+}
+
 div.footer {
     height: 100px;
     width: 100%;
@@ -36,6 +41,35 @@ div.bazarr-background-image {
     color: white;
 }
 
+div.default-post-image-box {
+    width: 100%;
+    height: 150px;
+}
+
+div.post-card:hover {
+    -webkit-animation: hover-shadow-effect 0.15s linear forwards;
+}
+
+div.post-card:hover, div.post-card {
+    border-radius: 5px;
+    height: 250px;
+}
+
+div.post-card {
+    box-shadow: 1px 1px 1px 1px #969192;
+    margin-bottom: 20px;
+}
+
+div.default-post-image {
+    background-image: url("http://cars.mclaren.com/files/live/sites/mclaren/files/cars-mclaren-com-Main/McLaren%20Model%20Section/P1%20New%20Images/Development%20%20or%20performance%20-%20P1%20at%20the%20ring/P1%20Bahrain%20shoot/McLaren%20P1%20Bahrain-773-crop5184x2670.jpg?t=w1440");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.84;
+    width: 100%;    
+    height: 100%;
+}
+
 nav.navbar-default {
     border: transparent !important;
     background-color: transparent !important;
@@ -47,6 +81,10 @@ nav.navbar-default {
 
 a.home-link {
     color: white;
+}
+
+div.post-card-info {
+    margin: 20px 0px 20px 0px;
 }
 
 div.search-navbar {

@@ -6,7 +6,7 @@ export default class NavBar extends React.Component {
         super(props);
         this.getCity = this.getCity.bind(this);
         this.getCategory = this.getCategory.bind(this);
-        this.state = {};
+        this.state = {location: 'Fetching Location...'};
     }
     
     componentDidMount() {
@@ -24,7 +24,7 @@ export default class NavBar extends React.Component {
         .then((response) => response.json())
         .then((json) => {
             this.setState({
-                city: json.city
+                location: json.city + ', ' + json.region_name
             });
         });
     };
@@ -50,8 +50,13 @@ export default class NavBar extends React.Component {
                 <nav className="navbar navbar-default navbar-fixed-top navbar-content" >
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <a className="navbar-brand" style={{color: 'white'}} href="#">Bazarr | {this.state.city}</a>
+                            <a className="navbar-brand" style={{color: 'white'}} href="#">Bazarr</a>
                         </div>
+                        <form className="navbar-form navbar-left" role="search">
+                            <div className="form-group">
+                                <input type="text" className="form-control" placeholder={this.state.location}/>
+                            </div>
+                        </form>
                     </div>
                 </nav>
                 <div className="jumbotron bazarr-background-image">
