@@ -1,5 +1,4 @@
 import React from 'react';
-import Recaptcha from 'react-grecaptcha';
 import './main.css';
 
 export default class Footer extends React.Component{
@@ -31,7 +30,6 @@ export default class Footer extends React.Component{
     render() {
         return(
             <div className="footer">
-                <script src='https://www.google.com/recaptcha/api.js'></script>
                 <div className="col-lg-12 col-sm-12 feedback-box">
                     <div className="input-group">
                         <input type="text" id="feedback" className="form-control" placeholder="Write any feedback here..." />
