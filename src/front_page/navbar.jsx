@@ -1,17 +1,18 @@
 import React from 'react';
+import { Modal, Nav, NavItem, Navbar, FormGroup, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
+import PostForm from './postform.jsx';
 
-export default class NavBar extends React.Component {
+export default class NavigationBar extends React.Component {
 
     constructor(props) {
         super(props);
         this.getCity = this.getCity.bind(this);
         this.getCategory = this.getCategory.bind(this);
-        this.state = {location: 'Fetching Location...'};
+        this.state = {location: 'Fetching Location...', showModal: false};
     }
     
     componentDidMount() {
         this.getCity();
-        this.getCategory();
     }
 
     getCity = () => {
@@ -44,28 +45,54 @@ export default class NavBar extends React.Component {
         });
     };
 
+    open = () => {
+        this.setState({
+            showModal: true
+        });
+    }
+
+    close = () => {
+        this.setState({
+            showModal: false
+        });
+    }
+
     render() {
         return (
-            <div className="navbar-box">
-                <nav className="navbar navbar-default navbar-fixed-top navbar-content" >
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                            <a className="navbar-brand" style={{color: 'white'}} href="#">Bazarr</a>
-                        </div>
-                        <form className="navbar-form navbar-left" role="search">
-                            <div className="form-group">
-                                <input type="text" className="form-control" placeholder={this.state.location}/>
-                            </div>
-                        </form>
-                    </div>
-                </nav>
+            <div>
+                <Navbar style={{background: 'purple'}} fixedTop collapseOnSelect>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <a href="#">Bazzar</a>
+                        </Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar.Header>
+                    <Navbar.Collapse>
+                        <Navbar.Form pullLeft>
+                            <FormGroup>
+                                <FormControl type="text" placeholder={this.state.location}/>
+                            </FormGroup>
+                        </Navbar.Form>
+                        <Navbar.Form pullRight>
+                            <Button bsStyle="primary" onClick={this.open} >{"Sell my stuff"}</Button>
+                            <Modal show={this.state.showModal} onHide={this.close}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Create a post</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <PostForm/>
+                            </Modal.Body>
+                            </Modal>
+                        </Navbar.Form>
+                    </Navbar.Collapse>
+                </Navbar>
                 <div className="jumbotron bazarr-background-image">
                     <div className="container">
                         <div className="text-center">
                             <h1>Welcome to Bazarr!</h1>
                             <p>Join the growing community</p>
                         </div>
-                        <div className="row" style={{margin: 'auto', padding: '25px 0 0 0', maxWidth:'600px'}}>
+                        <div className="row product-searchbar">
                             <div className="col-lg-12">
                                 <div className="input-group">
                                     <input type="text" className="form-control" placeholder="Search for..."/>

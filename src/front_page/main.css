@@ -4,12 +4,6 @@ div.footer {
     background-color: purple;
 }
 
-div.nav-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
 div.search-box {
     max-width: 650px;
     margin-left: 10%;
@@ -22,7 +16,8 @@ div.feedback-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 450px;
+    max-width: 650px;
+    margin: auto;
 }
 
 div.bazarr-background-image {
@@ -56,6 +51,12 @@ div.post-card {
 
 }
 
+.navbar {  border: none!important; }
+
+.navbar-brand, .sell-navbar {
+    color: white !important;
+}
+
 div.default-post-image {
     background-image: url("https://static01.nyt.com/images/2013/02/17/magazine/17wmt/17wmt-jumbo-v2.jpg");
     background-size: cover;
@@ -66,15 +67,6 @@ div.default-post-image {
     height: 100%;
 }
 
-nav.navbar-default {
-    border: transparent !important;
-    background-color: transparent !important;
-    position: absolute;
-    z-index: 1;
-    font-size: 20px;
-    padding: 0px 0px 0px 10px;
-}
-
 a.home-link {
     color: white;
 }
@@ -83,10 +75,10 @@ div.post-card-info {
     margin: 10px 0px 20px 0px;
 }
 
-div.search-navbar {
-    margin: 'auto';
-    padding: '25px 0 0 0';
-    max-width:'600px';
+div.product-searchbar {
+    margin: auto;
+    padding: 25px 0 0 0;
+    max-width: 600px;
 }
 
 body {

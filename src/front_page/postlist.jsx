@@ -29,7 +29,7 @@ export default class PostList extends React.Component {
             let posts =  json.posts.map((post) => {
                 i++;
                 return (
-                    <div key={i} className="col-md-6 col-sm-6 col-lg-6">
+                    <div key={i} className="col-md-6 col-sm-12 col-lg-4">
                         <div className="thumbnail">
                             <div className="caption">
                                 <h3>{post.label}</h3>
@@ -48,11 +48,9 @@ export default class PostList extends React.Component {
 
     render() {
         return (
-            <div className="col-md-8 col-sm-12 col-lg-8">
-                <div className="row">
-                    <div className="container-fluid">
-                        {this.state.posts}
-                    </div>
+            <div className="row">
+                <div className="container-fluid">
+                    {this.state.posts}
                 </div>
             </div>
         );

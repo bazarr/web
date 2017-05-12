@@ -1,4 +1,5 @@
 import React from 'react';
+import Utils from '../utils.js';
 import './main.css';
 
 export default class Footer extends React.Component{
@@ -10,7 +11,7 @@ export default class Footer extends React.Component{
 
     sendFeedback() {
         let rawMSG = document.getElementById('feedback');
-        fetch('http://localhost:8000/email', {
+        fetch(Utils.endpoint + '/email', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -30,7 +31,7 @@ export default class Footer extends React.Component{
     render() {
         return(
             <div className="footer">
-                <div className="col-lg-12 col-sm-12 feedback-box">
+                <div className="feedback-box">
                     <div className="input-group">
                         <input type="text" id="feedback" className="form-control" placeholder="Write any feedback here..." />
                         <span className="input-group-btn">
