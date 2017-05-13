@@ -75,7 +75,7 @@ export default class NavigationBar extends React.Component {
                         </Navbar.Form>
                         <Navbar.Form pullRight>
                             <Button bsStyle="primary" onClick={this.open} >{"Sell my stuff"}</Button>
-                            <Modal show={this.state.showModal} onHide={this.close}>
+                            <Modal bsSize="large" show={this.state.showModal} onHide={this.close}>
                             <Modal.Header closeButton>
                                 <Modal.Title>Create a post</Modal.Title>
                             </Modal.Header>

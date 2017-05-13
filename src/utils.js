@@ -1,3 +1,3 @@
 export default {
-     endpoint: 'http://bazarr-api.herokuapp.com'
+     endpoint: 'https://bazarr-api.herokuapp.com'
 }
