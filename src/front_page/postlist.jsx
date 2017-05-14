@@ -16,6 +16,7 @@ export default class PostList extends React.Component {
 
 
     getPosts() {
+        try {
         fetch(Utils.endpoint + '/posts', {
             method: 'GET',
             headers: {
@@ -46,6 +47,9 @@ export default class PostList extends React.Component {
 
             this.setState({ posts });
         });
+            } catch(error) {
+                window.alert(error);
+            }
     }
 
     render() {
