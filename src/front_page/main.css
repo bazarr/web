@@ -51,6 +51,10 @@ div.post-card {
 
 }
 
+h3.feedback-thank-you-message {
+    color: white;
+}
+
 .navbar {  border: none!important; }
 
 .navbar-brand, .sell-navbar {
