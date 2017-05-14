@@ -1,15 +1,20 @@
 import React from 'react';
 import Utils from '../utils.js';
+import base64Img from 'base64-img';
+import './main.css';
 
 export default class PostForm extends React.Component {
 
     constructor(props) {
         super(props);
         this.createPost = this.createPost.bind(this);
-        this.state = {};
+        this._handleImageChange = this._handleImageChange.bind(this);
+        this.state = { file: '',imagePreviewUrl: '' };
     }
 
     createPost() {
+        let imagePath = document.getElementById('input-image-path').value;
+        let base64ImageString = base64Img.base64Sync(imagePath);
         fetch(Utils.endpoint + '/posts', {
             method: 'POST',
             headers: {
@@ -21,12 +26,36 @@ export default class PostForm extends React.Component {
                 title: this.state.title,
                 description: this.state.description,
                 condition: this.state.condition,
-                price: this.state.price
+                price: this.state.price,
+                image: base64ImageString
             }),
         });
     }
 
+    _handleImageChange(e) {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result
+            });
+        };
+
+        reader.readAsDataURL(file)
+    }
+
     render() {
+        let {imagePreviewUrl} = this.state;
+        let $imagePreview = null;
+        if (imagePreviewUrl) {
+          $imagePreview = (<img src={imagePreviewUrl} />);
+        } else {
+          $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+        }
         return ( 
             <div>
                 <form>
@@ -56,7 +85,19 @@ export default class PostForm extends React.Component {
                         <label>Additional Info</label>
                         <textarea onChange={(e) => this.setState({description: e.target.value})} className="form-control" rows="5" id="addInfo"></textarea>
                     </div>
-                    <button type="button" onClick={() => this.createPost()} className="btn btn-default">Submit</button>
+                    <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-12 previewComponent">
+                            <input className="fileInput"
+                                id="input-image-path" 
+                                type="file" 
+                                accept="image/*"
+                                onChange={(e)=>this._handleImageChange(e)} />
+                            <button type="button" onClick={() => this.createPost()} className="btn btn-default">Submit</button>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-12 imgPreview">
+                            {$imagePreview}
+                        </div>
+                    </div>
                 </form>
             </div>
         );
