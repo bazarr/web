@@ -1,5 +1,5 @@
 import React from 'react';
-import Utils from '../utils.js';
+import Utils from '../../utils.js';
 import Recaptcha from 'react-recaptcha';
 import './main.css';
 
@@ -58,6 +58,7 @@ export default class Footer extends React.Component{
         let feedbackTextNode = this.state.feedbackState === GET_FEEDBACK ? (<input type="text" id="feedback" className="form-control" onKeyPress={this.onChangeFeedbackText} placeholder="Write any feedback here..." />) : (<div/>);
         let submitFeedbackButtonNode = this.state.feedbackState === GET_FEEDBACK ? (<button className="btn btn-default " onClick={this.submitFeedback} type="submit">Submit!</button>) : (<div/>);
         let thankyouMSGNode = this.state.feedbackState === SHOW_THANKYOU_MSG ? (<h3 className="feedback-thank-you-message">Thanks for the feedback!</h3>) : (<div/>);
+
         return(
             <div className="footer">
                 <div className="feedback-box text-center">

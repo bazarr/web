@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './navbar.jsx';
+import Header from './header.jsx';
 import Content from './content.jsx';
 import Footer from './footer.jsx';
 import 'whatwg-fetch';
@@ -17,7 +17,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar/>
+        <Header/>
         <Content/>
         <Footer/>
       </div>

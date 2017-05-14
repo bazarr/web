@@ -1,8 +1,10 @@
 import React from 'react';
-import { Modal, Nav, NavItem, Navbar, FormGroup, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
+import { Nav, NavItem, Navbar, FormGroup, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
 import PostForm from './postform.jsx';
+import { openCreatePostModal } from '../actions'
+import { connect } from 'react-redux';
 
-export default class NavigationBar extends React.Component {
+class Header extends React.Component {
 
     constructor(props) {
         super(props);
@@ -45,18 +47,6 @@ export default class NavigationBar extends React.Component {
         });
     };
 
-    open = () => {
-        this.setState({
-            showModal: true
-        });
-    }
-
-    close = () => {
-        this.setState({
-            showModal: false
-        });
-    }
-
     render() {
         return (
             <div>
@@ -74,15 +64,8 @@ export default class NavigationBar extends React.Component {
                             </FormGroup>
                         </Navbar.Form>
                         <Navbar.Form pullRight>
-                            <Button bsStyle="primary" onClick={this.open} >{"Sell my stuff"}</Button>
-                            <Modal bsSize="large" show={this.state.showModal} onHide={this.close}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Create a post</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                                <PostForm/>
-                            </Modal.Body>
-                            </Modal>
+                            <Button bsStyle="primary" onClick={this.props.openCreatePostModal} >{"Sell my stuff"}</Button>
+                            <PostForm />
                         </Navbar.Form>
                     </Navbar.Collapse>
                 </Navbar>
@@ -107,5 +90,24 @@ export default class NavigationBar extends React.Component {
             </div>
         );
     }
-
 }
+
+// This should be inside the container
+const mapStateToProps = (state) => {
+    return {};
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openCreatePostModal: () => {
+      dispatch(openCreatePostModal());
+    }
+  };
+}
+
+const HeaderContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
+
+export default HeaderContainer;

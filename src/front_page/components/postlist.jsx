@@ -1,5 +1,5 @@
 import React from 'react';
-import Utils from '../utils.js';
+import Utils from '../../utils.js';
 
 export default class PostList extends React.Component {
 
@@ -12,8 +12,6 @@ export default class PostList extends React.Component {
     componentDidMount() {
         this.getPosts();
     }
-
-
 
     getPosts() {
         fetch(Utils.endpoint + '/posts', {
@@ -43,7 +41,6 @@ export default class PostList extends React.Component {
                     </div>
                 );
             }
-
             this.setState({ posts });
         });
     }
