@@ -41,16 +41,14 @@ export default class PostForm extends React.Component {
                     <div className="form-group">
                         <div className="dropdown center-right">
                             <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                {this.state.condition || 'Condition'}
+                                {this.state.condition || 'Condition '}
                                 <span className="caret"></span>
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="conditionMenu">
-                                <li><a onClick={(e) => this.setState({condition: e.target.value})} >New</a></li>
-                                <li role="separator" className="divider"></li>
-                                <li><a onClick={(e) => this.setState({condition: e.target.value})}>Mint Condition</a></li>
-                                <li><a onClick={(e) => this.setState({condition: e.target.value})}>Working Condition</a></li>
-                                <li role="separator" className="divider"></li>
-                                <li><a onClick={(e) => this.setState({condition: e.target.value})}>Not Working</a></li>
+                                <li><a onClick={() => { this.setState({condition: 'New '})} }>New</a></li>
+                                <li><a onClick={() => { this.setState({condition: 'Mint Condition '})} }>Mint Condition</a></li>
+                                <li><a onClick={() => { this.setState({condition: 'Working Condition '})} }>Working Condition</a></li>
+                                <li><a onClick={() => { this.setState({condition: 'Not Working '})} }>Not Working</a></li>
                             </ul>
                         </div>
                     </div>
