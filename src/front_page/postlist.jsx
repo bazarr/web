@@ -26,9 +26,11 @@ export default class PostList extends React.Component {
         .then((response) => response.json())
         .then((json) => {
             let i = 0;
-            let posts =  json.posts.map((post) => {
+            let posts = [];
+            for( var j = 0; j < json.posts.length; j++ ) {
+                let post = json.posts[j];
                 i++;
-                return (
+                posts.push(
                     <div key={i} className="col-md-6 col-sm-12 col-lg-4">
                         <div className="thumbnail">
                             <div className="caption">
@@ -40,7 +42,7 @@ export default class PostList extends React.Component {
                         </div>
                     </div>
                 );
-            });
+            }
 
             this.setState({ posts });
         });
