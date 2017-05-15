@@ -70,7 +70,7 @@ class Header extends React.Component {
                     </Navbar.Collapse>
                 </Navbar>
                 <div className="jumbotron bazarr-background-image">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="text-center">
                             <h1>Welcome to Bazarr!</h1>
                             <p>Join the growing community</p>

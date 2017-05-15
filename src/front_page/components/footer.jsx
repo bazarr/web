@@ -59,7 +59,7 @@ export default class Footer extends React.Component{
         let thankyouMSGNode = this.state.feedbackState === SHOW_THANKYOU_MSG ? (<h3 className="feedback-thank-you-message">Thanks for the feedback!</h3>) : (<div/>);
 
         return(
-            <div className="footer">
+            <div className="footer container-fluid">
                 <div className="feedback-box text-center">
                     {recaptchaNode}
                     {thankyouMSGNode}
