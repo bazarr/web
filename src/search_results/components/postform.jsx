@@ -1,5 +1,6 @@
 import React from 'react';
 import { endpoint, condition } from '../../utils.js';
+import base64Img from 'base64-img';
 import { connect } from 'react-redux';
 import { submitNewPost, closeCreatePostModal } from '../actions';
 import { Modal, Nav, NavItem, Navbar, FormGroup, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
@@ -16,8 +17,7 @@ class PostForm extends React.Component {
     
     createPost() {
         let imagePath = this.state.imagePreviewUrl;
-        let base64ImageString = imagePath;
-        let createPost = this.props.createPost;
+        let base64ImageString = imagePath;//base64Img.base64Sync(imagePath);
         fetch(endpoint + '/posts', {
             method: 'POST',
             headers: {
@@ -32,12 +32,8 @@ class PostForm extends React.Component {
                 price: this.state.price,
                 image: base64ImageString
             }),
-        }).then( res => { 
-            createPost();
-            setTimeout(() => {
-                location.reload();
-            }, 250);
         });
+        this.props.createPost();
     }
 
     _handleImageChange(e) {

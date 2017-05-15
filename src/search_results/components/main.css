@@ -1,0 +1,136 @@
+div.footer {
+    height: 100px;
+    width: 100%;
+    background-color: purple;
+}
+
+div.search-box {
+    max-width: 650px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+}
+
+div.feedback-box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 450px;
+    margin: auto;
+}
+
+div.bazarr-background-image {
+    background-image: url("https://images5.alphacoders.com/573/thumb-1920-573228.jpg");
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    width: 100%;    
+    height: auto;
+    color: white;
+}
+
+div.default-post-image-box {
+    width: 100%;
+    height: 150px;
+}
+
+div.post-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+div.post-card:hover, div.post-card {
+    height: 210px;
+}
+
+div.post-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    transition: 0.3s;
+    margin-bottom: 20px;
+    border-radius: 15px;
+
+}
+
+h3.feedback-thank-you-message {
+    color: white;
+}
+
+.navbar {  border: none!important; }
+
+.navbar-brand, .sell-navbar {
+    color: white !important;
+}
+
+div.default-post-image {
+    background-image: url("https://static01.nyt.com/images/2013/02/17/magazine/17wmt/17wmt-jumbo-v2.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 15px 15px 0px 0px;
+    width: 100%;    
+    height: 100%;
+}
+
+a.home-link {
+    color: white;
+}
+
+div.post-card-info {
+    margin: 10px 0px 20px 0px;
+}
+
+div.product-searchbar {
+    margin: auto;
+    padding: 25px 0 0 0;
+    max-width: 600px;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: rgb(243,243,243) !important;
+}
+
+ /* Image preview */
+
+.fileInput {
+}
+
+.imgPreview {
+  text-align: center;
+  margin: 5px 15px;
+  height: 250px;
+  width: 250px;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #808080;
+  border-top: 5px solid #808080;
+  border-bottom: 5px solid #808080;
+}
+
+.imgPreview img {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;    
+    height: 100%;
+}
+.previewText {
+  width: 100%;
+  margin-top: 20px;
+}
+.submitButton {
+  padding: 12px;
+  margin-left: 10px;
+  background: #fff;
+  border: 4px solid #d3d3d3;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 10pt;
+  cursor: pointer;
+}
+.submitButton:hover {
+  background: #efefef;
+}
+.centerText {
+  text-align: center;
+  width: 500px;
+}
