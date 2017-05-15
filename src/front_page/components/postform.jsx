@@ -32,12 +32,8 @@ class PostForm extends React.Component {
                 price: this.state.price,
                 image: base64ImageString
             }),
-        }).then(value => {
-            console.log(value);
-            this.props.createPost();
-        }).fail( error => {
-            window.alert('Error! Could not create new post');
         });
+        this.props.createPost();
     }
 
     _handleImageChange(e) {
