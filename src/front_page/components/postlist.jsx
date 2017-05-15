@@ -1,5 +1,6 @@
 import React from 'react';
-import Utils from '../../utils.js';
+import { Grid, Col, Thumbnail } from 'react-bootstrap';
+import { endpoint, conditionMap } from '../../utils.js';
 
 export default class PostList extends React.Component {
 
@@ -14,7 +15,7 @@ export default class PostList extends React.Component {
     }
 
     getPosts() {
-        fetch(Utils.endpoint + '/posts', {
+        fetch(endpoint + '/posts', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -29,16 +30,14 @@ export default class PostList extends React.Component {
                 let post = json.posts[j];
                 i++;
                 posts.push(
-                    <div key={i} className="col-md-6 col-sm-12 col-lg-4">
-                        <div className="thumbnail">
-                            <div className="caption">
-                                <h3>{post.label}</h3>
-                                <img src={post.img} className="img-thumbnail"/> 
-                                <p>{post.description}</p>
-                                <p><a href="#" className="btn btn-primary" role="button">Buy</a></p>
-                            </div>
-                        </div>
-                    </div>
+                    <Col key={i} xs={12} sm={6} md={4} lg={12}>
+                        <Thumbnail src='http://hd.wallpaperswide.com/thumbs/koenigsegg_regera_red-t2.jpg' alt="242x200">
+                            <h3>{post.title}</h3>
+                            <h4>{post.description}</h4>
+                            <h4>Price: {post.price}</h4>
+                            <h4>{conditionMap[post.condition]}</h4>
+                        </Thumbnail>
+                    </Col>
                 );
             }
             this.setState({ posts });
@@ -49,7 +48,9 @@ export default class PostList extends React.Component {
         return (
             <div className="row">
                 <div className="container-fluid">
-                    {this.state.posts}
+                    <Grid>
+                        {this.state.posts}
+                    </Grid>
                 </div>
             </div>
         );

@@ -7,7 +7,6 @@ const GET_FEEDBACK = 'GET_FEEDBACK';
 const VALIDATE_HUMAN = 'VALIDATE_HUMAN';
 const SHOW_THANKYOU_MSG = 'SHOW_THANKYOU_MSG';
 
-
 export default class Footer extends React.Component{
     constructor(props) {
         super(props);

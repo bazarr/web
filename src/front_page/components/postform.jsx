@@ -1,5 +1,5 @@
 import React from 'react';
-import Utils from '../../utils.js';
+import { endpoint, condition } from '../../utils.js';
 import base64Img from 'base64-img';
 import { connect } from 'react-redux';
 import { submitNewPost, closeCreatePostModal } from '../actions';
@@ -12,13 +12,13 @@ class PostForm extends React.Component {
         super(props);
         this.createPost = this.createPost.bind(this);
         this._handleImageChange = this._handleImageChange.bind(this);
-        this.state = { file: '',imagePreviewUrl: '' };
+        this.state = { file: '',imagePreviewUrl: '', condition: { value: 'Condition ' } };
     }
 
     createPost() {
         let imagePath = document.getElementById('input-image-path').value;
-        let base64ImageString = ''; //base64Img.base64Sync(imagePath);
-        fetch(Utils.endpoint + '/posts', {
+        let base64ImageString = 'image'; //base64Img.base64Sync(imagePath);
+        fetch(endpoint + '/posts', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -28,11 +28,12 @@ class PostForm extends React.Component {
                 userId: '0500fde7-668d-4a60-9c9e-ace7f00b5e57', //this id will always be the same for now
                 title: this.state.title,
                 description: this.state.description,
-                condition: this.state.condition,
+                condition: this.state.condition.id,
                 price: this.state.price,
                 image: base64ImageString
             }),
-        }).then( () => {
+        }).then(value => {
+            console.log(value);
             this.props.createPost();
         }).fail( error => {
             window.alert('Error! Could not create new post');
@@ -82,14 +83,15 @@ class PostForm extends React.Component {
                             <div className="form-group">
                                 <div className="dropdown center-right">
                                     <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {this.state.condition || 'Condition '}
+                                        {this.state.condition.value}
                                         <span className="caret"></span>
                                     </button>
                                     <ul className="dropdown-menu" aria-labelledby="conditionMenu">
-                                        <li><a onClick={() => { this.setState({condition: 'New '})} }>New</a></li>
-                                        <li><a onClick={() => { this.setState({condition: 'Mint Condition '})} }>Mint Condition</a></li>
-                                        <li><a onClick={() => { this.setState({condition: 'Working Condition '})} }>Working Condition</a></li>
-                                        <li><a onClick={() => { this.setState({condition: 'Not Working '})} }>Not Working</a></li>
+                                        <li><a onClick={() => { this.setState({condition: condition.new})} }>New</a></li>
+                                        <li><a onClick={() => { this.setState({condition: condition.excellent})} }>Excellent</a></li>
+                                        <li><a onClick={() => { this.setState({condition: condition.good})} }>Good</a></li>
+                                        <li><a onClick={() => { this.setState({condition: condition.fair})} }>Fair</a></li>
+                                        <li><a onClick={() => { this.setState({condition: condition.asIs})} }>As is</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -104,7 +106,7 @@ class PostForm extends React.Component {
                                         type="file" 
                                         accept="image/*"
                                         onChange={(e)=>this._handleImageChange(e)} />
-                                    <button type="button" onClick={() => this.createPost()} className="btn btn-default">Submit</button>
+                                    <button type="button" onClick={() => {this.createPost()}} className="btn btn-default">Submit</button>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12 imgPreview">
                                     {$imagePreview}
