@@ -31,7 +31,7 @@ export default class PostList extends React.Component {
                 i++;
                 posts.push(
                     <Col key={i} xs={12} sm={6} md={4} lg={12}>
-                        <Thumbnail src='http://hd.wallpaperswide.com/thumbs/koenigsegg_regera_red-t2.jpg' alt="242x200">
+                        <Thumbnail src={post.image} alt="242x200">
                             <h3>{post.title}</h3>
                             <h4>{post.description}</h4>
                             <h4>Price: {post.price}</h4>

@@ -14,10 +14,10 @@ class PostForm extends React.Component {
         this._handleImageChange = this._handleImageChange.bind(this);
         this.state = { file: '',imagePreviewUrl: '', condition: { value: 'Condition ' } };
     }
-
+    
     createPost() {
-        let imagePath = document.getElementById('input-image-path').value;
-        let base64ImageString = 'image'; //base64Img.base64Sync(imagePath);
+        let imagePath = this.state.imagePreviewUrl;
+        let base64ImageString = imagePath;//base64Img.base64Sync(imagePath);
         fetch(endpoint + '/posts', {
             method: 'POST',
             headers: {
