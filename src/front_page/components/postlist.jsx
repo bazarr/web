@@ -30,7 +30,7 @@ export default class PostList extends React.Component {
                 let post = json.posts[j];
                 i++;
                 posts.push(
-                    <Col key={i} xs={12} sm={6} md={4} lg={12}>
+                    <Col key={i} xs={12} sm={6} md={4} lg={3}>
                         <Thumbnail src={post.image} alt="242x200">
                             <h3>{post.title}</h3>
                             <h4>{post.description}</h4>
