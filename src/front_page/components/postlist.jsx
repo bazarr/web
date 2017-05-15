@@ -1,8 +1,10 @@
 import React from 'react';
 import { Grid, Col, Thumbnail } from 'react-bootstrap';
 import { endpoint, conditionMap } from '../../utils.js';
+import { connect } from 'react-redux';
+import { doneLoadingPosts } from '../actions';
 
-export default class PostList extends React.Component {
+class PostList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -40,6 +42,7 @@ export default class PostList extends React.Component {
                     </Col>
                 );
             }
+            this.props.doneLoading();
             this.setState({ posts });
         });
     }
@@ -56,3 +59,24 @@ export default class PostList extends React.Component {
         );
     }
 }
+
+// This should be inside the container
+const mapStateToProps = (state) => {
+  return {
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        doneLoading: () => {
+            dispatch(doneLoadingPosts());
+        }
+    };
+}
+
+const PostListContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PostList)
+
+export default PostListContainer;

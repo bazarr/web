@@ -15,3 +15,9 @@ export const closeCreatePostModal = () => {
         type: 'CLOSE_POST_MODAL'
     }
 };
+
+export const doneLoadingPosts = () => {
+    return {
+        type: 'LOADING_POSTS_SUCCESS'
+    }
+};
