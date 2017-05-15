@@ -59,9 +59,7 @@ class Header extends React.Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Navbar.Form pullLeft>
-                            <FormGroup>
-                                <FormControl type="text" placeholder={this.state.location}/>
-                            </FormGroup>
+                            <h5 className="text-center location"><b>{this.state.location}</b></h5>
                         </Navbar.Form>
                         <Navbar.Form pullRight>
                             <Button bsStyle="primary" onClick={this.props.openCreatePostModal} >{"Sell my stuff"}</Button>

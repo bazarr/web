@@ -30,6 +30,10 @@ div.bazarr-background-image {
     color: white;
 }
 
+h5.location {
+    color: white;
+}
+
 div.default-post-image-box {
     width: 100%;
     height: 150px;
