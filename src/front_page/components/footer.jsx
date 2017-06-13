@@ -1,5 +1,5 @@
 import React from 'react';
-import { endpoint } from '../../utils.js';
+import Utils from '../../utils.js';
 import Recaptcha from 'react-recaptcha';
 import './main.css';
 
@@ -28,7 +28,7 @@ export default class Footer extends React.Component{
     }
 
     sendFeedback() {
-        fetch(endpoint + '/email', {
+        fetch(Utils.endpoint + '/email', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
