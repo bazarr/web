@@ -1,6 +1,5 @@
 import React from 'react';
 import { endpoint, condition } from '../../utils.js';
-import base64Img from 'base64-img';
 import { connect } from 'react-redux';
 import { submitNewPost, closeCreatePostModal } from '../actions';
 import { Modal, Nav, NavItem, Navbar, FormGroup, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
