@@ -28,6 +28,23 @@ app.get('/chat', (req,res) => {
   res.render('pages/chat_page');
 });
 
+app.get('/account', (req, res) => {
+	res.render('pages/account')
+});
+
+app.post('/save-details', (req, res) => {
+  	fetch('http://freegeoip.net/json/', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      this.setState({city: json.city});
+    });
+});
+
 server.listen(PORT, () => {
   console.log('Node app is running on port', PORT);
 });
